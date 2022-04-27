@@ -1,0 +1,30 @@
+{% extends 'navsimple.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <section class="header py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">
+          <div class="card ">
+            <div class="card-header bg-dark text-light" align="center"><h4><em>LOGIN</em></h4></div>
+            <div class="card-body">
+              <form action="" method="post" class="uniform">
+
+                {% crispy form %}
+
+                {% csrf_token %}
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

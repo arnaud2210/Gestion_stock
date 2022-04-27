@@ -7,7 +7,7 @@ services:
     volumes: 
       - ./data/db:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: supermarket
+      POSTGRES_DB: market
       POSTGRES_USER: naud
       POSTGRES_PASSWORD: naud.2002
   

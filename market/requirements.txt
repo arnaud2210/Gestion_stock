@@ -1,5 +1,7 @@
 asgiref==3.5.0
+crispy-bootstrap5==0.6
 Django==4.0.4
+django-crispy-forms==1.14.0
 postgres==4.0
 psycopg2-binary==2.9.3
 psycopg2-pool==1.1
