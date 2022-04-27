@@ -31,6 +31,10 @@ LANGUAGE_CODE = 'fr-fr'
 
 AUTH_USER_MODEL = 'users.User'
 
+LOGIN_URL = 'login'
+
+LOGIN_REDIRECT_URL = 'home'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,8 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'users',
+    'article',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4',
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,7 +92,7 @@ WSGI_APPLICATION = 'market.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'supermarket',
+        'NAME': 'market',
         'USER': 'naud',
         'PASSWORD': 'naud.2002',
         'HOST': 'db',
