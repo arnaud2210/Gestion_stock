@@ -22,3 +22,8 @@ def login_page(request):
                 message = 'Identifiants invalides.'
     return render(
         request, 'login.html', context={'form': form, 'message': message})
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')

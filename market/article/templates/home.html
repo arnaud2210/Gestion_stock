@@ -1,7 +1,41 @@
 {% extends 'base.html' %}
 
+{% load static %}
 
 {% block content %}
 
+<section class="header py-5">
+    <div class="container shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="row">
+            <div class="col py-4">
+                <figure class="figure">
+                    <img src="{% static 'images/stock.png'%}" class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption text-center"><em>Petit bonhomme qui stocke</em></figcaption>
+                </figure>
+            </div>
+            <div class="col py-4">
+                <hr>
+                <h1 align="center">Bienvenue sur <em><strong>Stock</strong></em></h1>
+                <hr>
+                <dib class="mb-3">
+                    <p>
+                        En tant que gestionnaire de stock, servez vous de <em><strong>Stock</strong></em>
+                        pour la gestion de vos articles. <br> Ce logiciel vous permet :
+                        <ul>
+                            <li>d'enregistrer vos articles</li>
+                            <li>d'afficher la liste des articles en stock</li>
+                            <li>de modifier ou supprimer un article dud stock</li>
+                            <li>de rechercher un article en stock</li>
+                            <li>d'approvisionner un article</li>
+                            <li>de consulter la liste des articles en dessous du seuil d'approvisionnement</li>
+                            <li>de vendre un article disponible en stock</li>
+                        </ul>
+                    </p>
+                </dib>
+            </div>
+        </div>
+    </div>
+    
+</section>
 
 {% endblock %}

@@ -14,10 +14,10 @@ class LoginForm(forms.Form):
     helper = FormHelper()
     helper.form_class = 'form-horizontal'
     helper.layout = Layout(
-        Field('username', css_class='input'),
-        Field('password', css_class='input'),
+        Field('username', css_class='input-xlarge'),
+        Field('password', css_class='input-xlarge'),
 
         FormActions(
-            Submit('save_changes', 'Connexion', css_class="btn-primary"),
+            Submit('save_changes', 'Connexion', css_class="btn-secondary"),
         )
     )
