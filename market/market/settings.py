@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-vr-n3hza07u##p7r0hkznio&kut(5s@4s^062_^*0!8t5-+=13
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = []
 
 LANGUAGE_CODE = 'fr-fr'
 
@@ -95,7 +95,7 @@ DATABASES = {
         'NAME': 'market',
         'USER': 'naud',
         'PASSWORD': 'naud.2002',
-        'HOST': 'db',
+        'HOST': 'localhost',
         'PORT': 5432,
     }
 }
