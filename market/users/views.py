@@ -2,26 +2,28 @@ from django.conf import settings
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from . import forms
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import logout, get_user_model, login, authenticate
+
+User = get_user_model()
+
 
 def login_page(request):
-    form = forms.LoginForm()
-    message = ''
     if request.method == 'POST':
-        form = forms.LoginForm(request.POST)
-        if form.is_valid():
-            user = authenticate(
-                username=form.cleaned_data['username'],
-                password=form.cleaned_data['password'],
-            )
-            if user is not None:
-                login(request, user)
-                message = f'Bonjour, {user.username}! Vous êtes connecté.'
-                return redirect('home')
-            else:
-                message = 'Identifiants invalides.'
+
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        # fonction pour créer un utilisateur et le connecter directement
+        # User.objects.create_user(username=username, password=password)
+
+        # fonction pour connecter un utilisateur
+        user = authenticate(username=username, password=password)
+        if user:
+            login(request, user)
+            return redirect('categories')
+
     return render(
-        request, 'login.html', context={'form': form, 'message': message})
+        request, 'login.html')
 
 
 def logout_user(request):
