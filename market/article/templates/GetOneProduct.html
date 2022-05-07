@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<section class="header py-5">
+    <div class="container shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="row">
+            <div class="col py-4">
+                <figure class="figure">
+                    <img src="{% static 'images/details.png'%}" class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption text-center"><em>Informations d'un article</em></figcaption>
+                </figure>
+            </div>
+            <div class="col py-4">
+                <hr>
+                <h2 align="center">Modifier un article</h2>
+                <hr>
+                <div class="m-b3">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="container">
+                            <div class="mb-3">
+                                <label for="label-name" class="col-form-label">Désignation:</label>
+                                <input type="text" class="form-control" id="label-name" name="label" required
+                                    value="{{ product.label }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="col-form-label">Prix Unitaire:</label>
+                                <input type="number" class="form-control" id="price" name="price" required
+                                    value="{{ product.price }}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="quantity" class="col-form-label">Quantité:</label>
+                                <input type="number" class="form-control" id="quantity" name="quantity" required
+                                    value="{{ product.quantity }}">
+                            </div>
+                            <!--div class="mb-3">
+                                <label for="cat-name" class="col-form-label">Catégorie:</label>
+                                <select class="form-select" id="cat-name" name="categorie" required>
+
+                                    {% for category in all_categories %}
+                                    <option value="{{ category.id }}">{{ category.category }}</option>
+                                    {% endfor %}
+
+                                </select>
+                            </div-->
+                            <div class="mb-3">
+                                <label for="creation" class="col-form-label">Date de création:</label>
+                                <input type="date" class="form-control" id="creation" name="creation" required
+                                    value="{{ product.creation }}">
+                            </div>
+                            <div class="mb-3">
+                                <a class="btn btn-outline-dark" href="{% url 'products' %}">Retour à la liste</a>
+                                <button type="submit" class="btn btn-outline-primary">Confirmer</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+</section>
+
+{% endblock %}

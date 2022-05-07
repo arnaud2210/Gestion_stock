@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from users.views import login_page, logout_user
-from article.views import home, add_to_category, list_of_category, add_to_article, list_of_product
+from article.views import home, add_to_category, list_of_category, add_to_article, list_of_product, get_one_product, delete_one_product
 
 
 urlpatterns = [
@@ -32,5 +32,7 @@ urlpatterns = [
     path('product/add/', add_to_article, name='addArticle'),
     path('product/', list_of_product, name='products'),
 
-    #path('resupply/', resupply, name='resupply'),    
+    path('product/<int:id>/', get_one_product, name='select_one_article'),
+    path('delete/<int:id>/', delete_one_product, name='delete_one_article'),
+
 ]

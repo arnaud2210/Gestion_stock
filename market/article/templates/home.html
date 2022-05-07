@@ -23,43 +23,49 @@
                     <p>
                         En tant que gestionnaire de stock, servez vous de <em><strong>Stock</strong></em>
                         pour la gestion de vos articles. <br> Ce logiciel vous permet :
-                        <ul>
-                            <li>de créer des catégories</li>
-                            <li>d'enregistrer vos articles par catégorie</li>
-                            <li>d'afficher la liste des articles en stock</li>
-                            <li>de modifier ou supprimer un article du stock</li>
-                            <li>de rechercher un article en stock</li>
-                            <li>d'approvisionner un article</li>
-                            <li>de consulter la liste des articles en dessous du seuil d'approvisionnement</li>
-                            <li>de vendre un article disponible en stock</li>
-                            
-                        </ul>
+                    <ul>
+                        <li>de créer des catégories</li>
+                        <li>d'enregistrer vos articles par catégorie</li>
+                        <li>d'afficher la liste des articles en stock</li>
+                        <li>de modifier ou supprimer un article du stock</li>
+                        <li>de rechercher un article en stock</li>
+                        <li>d'approvisionner un article</li>
+                        <li>de consulter la liste des articles en dessous du seuil d'approvisionnement</li>
+                        <li>de vendre un article disponible en stock</li>
+
+                    </ul>
                     </p>
                 </div>
                 <hr>
                 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                     <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <a type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal1">catégorie</a>
+                        <a type="button" class="btn btn-dark" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal1">catégorie</a>
 
-                        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered text-dark">
                                 <div class="modal-content">
                                     <div class="modal-header bg-light text-dark">
                                         <h3>Créer une catégorie</h3>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                     </div>
                                     <form action="/category/add/" method="POST">
                                         {% csrf_token %}
                                         <div class="modal-body">
                                             <div class="container">
                                                 <div class="mb-3">
-                                                    <label for="categorie-name" class="col-form-label">Nom catégorie:</label>
-                                                    <input type="text" class="form-control" id="categorie-name" name="category" required>
+                                                    <label for="categorie-name" class="col-form-label">Nom
+                                                        catégorie:</label>
+                                                    <input type="text" class="form-control" id="categorie-name"
+                                                        name="category" required>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer bg-light">
-                                            <button type="close" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                                            <button type="close" class="btn btn-danger"
+                                                data-bs-dismiss="modal">Annuler</button>
                                             <button type="submit" class="btn btn-primary">Ajouter</button>
                                         </div>
                                     </form>
@@ -67,14 +73,17 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter un article</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Ajouter un article</button>
 
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered text-dark">
                                 <div class="modal-content">
                                     <div class="modal-header bg-light text-dark">
                                         <h3>Ajouter un article</h3>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                     </div>
                                     <form action="/product/add/" method="POST">
                                         {% csrf_token %}
@@ -82,34 +91,41 @@
                                             <div class="container">
                                                 <div class="mb-3">
                                                     <label for="label-name" class="col-form-label">Désignation:</label>
-                                                    <input type="text" class="form-control" id="label-name" name="label" required>
+                                                    <input type="text" class="form-control" id="label-name" name="label"
+                                                        required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="price" class="col-form-label">Prix Unitaire:</label>
-                                                    <input type="number" class="form-control" id="price" name="price" required>
+                                                    <input type="number" class="form-control" id="price" name="price"
+                                                        required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="quantity" class="col-form-label">Quantité:</label>
-                                                    <input type="number" class="form-control" id="quantity" name="quantity" required>
+                                                    <input type="number" class="form-control" id="quantity"
+                                                        name="quantity" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="cat-name" class="col-form-label">Catégorie:</label>
                                                     <select class="form-select" id="cat-name" name="categorie" required>
 
                                                         {% for category in all_categories %}
-                                                            <option value="{{ category.id }}">{{ category.category }}</option>
+                                                        <option value="{{ category.id }}">{{ category.category }}
+                                                        </option>
                                                         {% endfor %}
 
                                                     </select>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="creation" class="col-form-label">Date de création:</label>
-                                                    <input type="date" class="form-control" id="creation" name="creation" required>
+                                                    <label for="creation" class="col-form-label">Date de
+                                                        création:</label>
+                                                    <input type="date" class="form-control" id="creation"
+                                                        name="creation" required>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer bg-light">
-                                            <button type="close" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                                            <button type="close" class="btn btn-danger"
+                                                data-bs-dismiss="modal">Annuler</button>
                                             <button type="submit" class="btn btn-primary">Ajouter</button>
                                         </div>
                                     </form>
@@ -120,13 +136,13 @@
                         <a type="button" class="btn btn-warning">stock disponible</a>
                         <a type="button" class="btn btn-danger">réapprovisionner</a>
                         <a type="button" class="btn btn-success">rechercher</a>
-    
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
 </section>
 
 {% endblock %}
