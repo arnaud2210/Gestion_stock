@@ -1,2 +1,4 @@
 /env
-/market/data
+/market/article/__pycache__
+/market/market/__pycache__
+/market/users/__pycache__

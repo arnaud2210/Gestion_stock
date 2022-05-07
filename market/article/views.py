@@ -20,7 +20,6 @@ def add_to_category(request, method="/category/add/"):
             return redirect('categories')
         except:
             abort(404)
-            return f'ERREUR DE CONNEXION'
 
 
 def list_of_category(request):
@@ -41,19 +40,39 @@ def add_to_article(request, method="/product/add/"):
             article = Article(category_id=category, label=label,
                               price=price, quantity=quantity, creation=creation)
             article.save()
-
             return redirect('products')
+
         except:
             abort(404)
-            f"Votre ressource n'a pas été créée"
 
 
 def list_of_product(request):
 
     all_products = Article.objects.all()
+    all_categories = Category.objects.all()
     numberOfProduct = Article.objects.count()
-    return render(request, 'ListOfProduct.html', context={'all_products': all_products, 'numberOfProduct': numberOfProduct})
+    return render(request, 'ListOfProduct.html', context={'all_products': all_products, 'all_categories': all_categories, 'numberOfProduct': numberOfProduct})
 
 
-"""def resupply(request):
-    render(request, 'Resupply.html')"""
+def get_one_product(request, id, method='/product/<int:id>/'):
+
+    product = Article.objects.get(id=id)
+    all_categories = Category.objects.all()
+
+    if request.method == 'POST':
+        product.label = request.POST.get('label')
+        product.price = request.POST.get('price')
+        product.quantity = request.POST.get('quantity')
+        product.creation = request.POST.get('creation')
+
+        product.save()
+        return redirect('products')
+    return render(request, 'GetOneProduct.html', context={'product': product, 'all_categories': all_categories})
+
+
+def delete_one_product(request, id, method="/delete/<int:id>/"):
+    
+    article = Article.objects.get(id=id)
+    article.delete()
+    return redirect('products')
+
