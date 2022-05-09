@@ -1,4 +1,5 @@
 from os import abort
+from unittest import result
 from django import forms
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -48,10 +49,9 @@ def add_to_article(request, method="/product/add/"):
 
 def list_of_product(request):
 
-    all_products = Article.objects.all()
-    all_categories = Category.objects.all()
+    all_products = Article.objects.order_by('id')
     numberOfProduct = Article.objects.count()
-    return render(request, 'ListOfProduct.html', context={'all_products': all_products, 'all_categories': all_categories, 'numberOfProduct': numberOfProduct})
+    return render(request, 'ListOfProduct.html', context={'all_products': all_products, 'numberOfProduct': numberOfProduct})
 
 
 def get_one_product(request, id, method='/product/<int:id>/'):
@@ -63,7 +63,6 @@ def get_one_product(request, id, method='/product/<int:id>/'):
         product.label = request.POST.get('label')
         product.price = request.POST.get('price')
         product.quantity = request.POST.get('quantity')
-        product.creation = request.POST.get('creation')
 
         product.save()
         return redirect('products')
@@ -71,8 +70,27 @@ def get_one_product(request, id, method='/product/<int:id>/'):
 
 
 def delete_one_product(request, id, method="/delete/<int:id>/"):
-    
+
     article = Article.objects.get(id=id)
     article.delete()
     return redirect('products')
 
+
+def research_product(request):
+
+    word = '/'
+    if request.method == "POST":
+        word = request.POST.get('search')
+
+    results = Article.objects.filter(label__contains=word)
+    return render(request, 'SearchProduct.html', context={'results': results})
+
+
+def resupply_products(request):
+
+    seuil = 10
+    #if request.method == "POST":
+        #seuil = request.POST.get('seuil')
+
+    results = Article.objects.filter(quantity__lt=seuil).order_by('quantity')
+    return render(request, 'Resupply.html', context={'results': results})
