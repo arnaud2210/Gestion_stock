@@ -12,6 +12,7 @@
                 <h2>LISTE DES PRODUITS</h2>
             </em>
             <hr>
+            <p align="right"><strong><em>TOTAL :</em> {{ numberOfProduct }}</strong></p>
         </div>
 
         <div class="">
@@ -83,7 +84,6 @@
                     data-bs-target="#exampleModal1">Ajouter un article</button>
                 <a type="button" class="btn btn-light" href="{% url 'categories' %}">Retour à l'accueil</a>
 
-                <p align="right"><strong><em>TOTAL :</em> {{ numberOfProduct }}</strong></p>
                 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered text-dark">
@@ -104,12 +104,15 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="price" class="col-form-label">Prix Unitaire:</label>
-                                            <input type="number" class="form-control" id="price" name="price" required>
+                                            <input type="number" class="form-control" id="price" name="price" required
+                                                oninput="checkPrice()">
+                                            <p><label id='message'></label></p>
                                         </div>
                                         <div class="mb-3">
                                             <label for="quantity" class="col-form-label">Quantité:</label>
                                             <input type="number" class="form-control" id="quantity" name="quantity"
-                                                required>
+                                                oninput="checkQuantity()" required>
+                                            <p><label id='msg'></label></p>
                                         </div>
                                         <div class="mb-3">
                                             <label for="cat-name" class="col-form-label">Catégorie:</label>

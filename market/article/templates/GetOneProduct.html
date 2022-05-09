@@ -2,8 +2,6 @@
 
 {% load static %}
 
-{% load crispy_forms_tags %}
-
 {% block content %}
 
 <section class="header py-5">
@@ -31,12 +29,14 @@
                             <div class="mb-3">
                                 <label for="price" class="col-form-label">Prix Unitaire:</label>
                                 <input type="number" class="form-control" id="price" name="price" required
-                                    value="{{ product.price }}">
+                                    value="{{ product.price }}" oninput="checkPrice()">
+                                <p><label id='message'></label></p>
                             </div>
                             <div class="mb-3">
                                 <label for="quantity" class="col-form-label">Quantité:</label>
                                 <input type="number" class="form-control" id="quantity" name="quantity" required
-                                    value="{{ product.quantity }}">
+                                    value="{{ product.quantity }}" oninput="checkQuantity()">
+                                <p><label id='msg'></label></p>
                             </div>
                             <!--div class="mb-3">
                                 <label for="cat-name" class="col-form-label">Catégorie:</label>
@@ -48,11 +48,11 @@
 
                                 </select>
                             </div-->
-                            <div class="mb-3">
+                            <!--div class="mb-3">
                                 <label for="creation" class="col-form-label">Date de création:</label>
                                 <input type="date" class="form-control" id="creation" name="creation" required
                                     value="{{ product.creation }}">
-                            </div>
+                            </div-->
                             <div class="mb-3">
                                 <a class="btn btn-outline-dark" href="{% url 'products' %}">Retour à la liste</a>
                                 <button type="submit" class="btn btn-outline-primary">Confirmer</button>
