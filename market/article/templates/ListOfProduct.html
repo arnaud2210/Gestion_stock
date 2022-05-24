@@ -8,22 +8,22 @@
     <div class="container shadow-lg p-3 mb-5 bg-white rounded ">
         <div class="header">
             <hr>
-            <em align="center">
-                <h2>LISTE DES PRODUITS</h2>
+            <em>
+                <h2 align="center">LISTE DES PRODUITS</h2>
             </em>
             <hr>
             <p align="right"><strong><em>TOTAL :</em> {{ numberOfProduct }}</strong></p>
         </div>
 
         <div class="">
-            <table class="table table-bordered">
-                <thead class="bg-success text-light">
+            <table class="table table-striped">
+                <thead class="bg-dark text-light">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">DESIGNATIONS</th>
                         <th scope="col">NBRES</th>
                         <th scope="col">PRIX</th>
-                        <th scope="col">DATE D'ENTREES</th>
+                        <!--th scope="col">DATE D'ENTREES</th-->
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -32,10 +32,10 @@
                     <tr>
                         <th>{{ article.id }}</th>
                         <td>{{ article.label }}</td>
-                        <td>{{ article.quantity }}</td>
+                        <td align="">{{ article.quantity }}</td>
                         <td>{{ article.price }}</td>
-                        <td align="center">{{ article.creation }}</td>
-                        <td align="">
+                        <!--td>{{ article.creation }}</td-->
+                        <td>
 
                             <a type="" class="btn btn-warning" href="{% url 'select_one_article' article.id %}"
                                 id="Edit">
@@ -80,7 +80,7 @@
                 </tbody>
             </table>
             <div class="mb-3">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
                     data-bs-target="#exampleModal1">Ajouter un article</button>
                 <a type="button" class="btn btn-light" href="{% url 'categories' %}">Retour à l'accueil</a>
 
