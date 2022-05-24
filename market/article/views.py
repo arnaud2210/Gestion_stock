@@ -89,8 +89,8 @@ def research_product(request):
 def resupply_products(request):
 
     seuil = 10
-    #if request.method == "POST":
-        #seuil = request.POST.get('seuil')
+    # if request.method == "POST":
+    #seuil = request.POST.get('seuil')
 
     results = Article.objects.filter(quantity__lt=seuil).order_by('quantity')
     return render(request, 'Resupply.html', context={'results': results})
