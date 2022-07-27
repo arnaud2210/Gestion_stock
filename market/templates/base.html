@@ -11,6 +11,16 @@
   <!-- Bootstrap CSS -->
   <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
   <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+  
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"
+    integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0-rc.1/Chart.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
 
   <title>GESTION_STOCK</title>
 </head>
@@ -33,9 +43,7 @@
               <a class="nav-link active" href="{% url 'products' %}">Stock</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="#">
-
-              </a>
+              <a class="nav-link active" href="{% url 'statistic' %}">Statistic</a>
 
             </li>
             <li class="nav-item">
@@ -68,6 +76,7 @@
   </header>
 
   <div class="main">
+    {% block scripts %}{% endblock scripts %}
     {% block content %}{% endblock content %}
   </div>
 
