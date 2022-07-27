@@ -1,8 +1,11 @@
+from multiprocessing import context
 from os import abort
+from unicodedata import category
 from unittest import result
 from django import forms
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
 
 from .models import Article, Category
 
@@ -94,3 +97,13 @@ def resupply_products(request):
 
     results = Article.objects.filter(quantity__lt=seuil).order_by('quantity')
     return render(request, 'Resupply.html', context={'results': results})
+
+
+class ChartView(TemplateView):
+    template_name = 'chart.html'
+
+    def get_context_data(self, **kwargs):
+        seuil = 10
+        context = super().get_context_data(**kwargs)
+        context["qs"] = Article.objects.filter(quantity__lt=seuil)
+        return context

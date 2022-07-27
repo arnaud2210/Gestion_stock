@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.shortcuts import render
 from django.shortcuts import render, redirect
-from . import forms
 from django.contrib.auth import logout, get_user_model, login, authenticate
 
 User = get_user_model()

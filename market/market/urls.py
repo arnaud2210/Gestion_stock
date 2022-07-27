@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from article.views import ChartView
 from users.views import login_page, logout_user
 from article.views import home, add_to_category, list_of_category, add_to_article, list_of_product, get_one_product, delete_one_product, research_product, resupply_products
 
@@ -36,5 +37,7 @@ urlpatterns = [
 
     path('search/', research_product , name='search_view'),
     path('resupply/', resupply_products , name='resupply'),
+
+    path('statistics/', ChartView.as_view() , name='statistic'),
 
 ]
